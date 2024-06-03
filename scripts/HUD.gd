@@ -40,8 +40,7 @@ func update_score(score):
 	$ScoreLabel.text = str(score)
 
 
-func _on_start_button_pressed():
-	$StartButton.hide()
+func _on_start_button_pressed(): #signal
 	start_game.emit()
 
 
