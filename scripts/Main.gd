@@ -4,8 +4,9 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
-
+	$HUD.agregarNombre()
+	$HUD.show_maxPoints()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -15,6 +16,7 @@ func _process(delta):
 func new_game():
 	get_tree().call_group("mobs", "queue_free")
 	score = 0
+	$HUD.hide_maxPoints()
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
 	$HUD.update_score(score)
@@ -55,9 +57,20 @@ func _on_mob_timer_timeout():
 
 
 func _on_score_timer_timeout():
+	
 	score += 1
 	$HUD.update_score(score)
-
+	updMaxScore()
+	
 func _on_start_timer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+
+func updMaxScore():
+	var scoremax = Save.game_data.PuntajeMaximo
+	if score>scoremax:
+		
+		scoremax=score
+		Save.game_data.PuntajeMaximo = scoremax
+		Save.save_data()
+		print(Save.game_data)

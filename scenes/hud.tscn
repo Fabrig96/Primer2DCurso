@@ -67,5 +67,40 @@ text = "Start"
 wait_time = 2.0
 one_shot = true
 
+[node name="MaxScoreTitle" type="Label" parent="."]
+offset_left = 140.0
+offset_top = 488.0
+offset_right = 266.0
+offset_bottom = 513.0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_76q2g")
+theme_override_font_sizes/font_size = 20
+text = "Max Score: "
+
+[node name="MaxScore" type="Label" parent="."]
+offset_left = 280.0
+offset_top = 488.0
+offset_right = 369.0
+offset_bottom = 513.0
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("2_76q2g")
+theme_override_font_sizes/font_size = 20
+text = "0
+"
+
+[node name="NombreInp" type="LineEdit" parent="."]
+offset_left = 152.0
+offset_top = 192.0
+offset_right = 312.0
+offset_bottom = 224.0
+
+[node name="NombreBtn" type="Button" parent="."]
+offset_left = 168.0
+offset_top = 240.0
+offset_right = 305.0
+offset_bottom = 271.0
+text = "Agregar Nombre"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="timeout" from="MessageTimer" to="." method="_on_message_timer_timeout"]
+[connection signal="pressed" from="NombreBtn" to="." method="_on_nombre_btn_pressed"]
